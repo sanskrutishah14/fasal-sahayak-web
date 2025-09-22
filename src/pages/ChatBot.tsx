@@ -3,8 +3,10 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
-import { Sprout, Send, User, Bot, ArrowLeft, Leaf } from "lucide-react";
+import { Sprout, Send, User, Bot, ArrowLeft, Leaf, LogOut } from "lucide-react";
 import { useState } from "react";
+import { AuthGuard } from "@/components/AuthGuard";
+import { useAuth } from "@/hooks/useAuth";
 
 interface Message {
   id: string;
@@ -16,10 +18,11 @@ interface Message {
 const ChatBot = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m your CropWise AI assistant. I can help you with crop recommendations, weather insights, and farming best practices. What would you like to know?',
+      text: `Hello ${user?.user_metadata?.full_name || 'there'}! I'm your CropWise AI assistant. I can help you with crop recommendations, weather insights, and farming best practices. What would you like to know?`,
       sender: 'bot',
       timestamp: new Date()
     }
@@ -53,7 +56,8 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-sky">
+    <AuthGuard>
+      <div className="min-h-screen bg-gradient-sky">
       {/* Header */}
       <div className="bg-white/95 backdrop-blur-sm border-b shadow-soft">
         <div className="container mx-auto px-4 py-4">
@@ -77,9 +81,20 @@ const ChatBot = () => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2 text-green-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium">Online</span>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={signOut}
+                className="flex items-center gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </Button>
+              <div className="flex items-center gap-2 text-green-600">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Online</span>
+              </div>
             </div>
           </div>
         </div>
@@ -170,14 +185,14 @@ const ChatBot = () => {
           </div>
         </Card>
 
-        <div className="mt-4 p-4 bg-white/80 backdrop-blur-sm rounded-lg shadow-soft">
-          <p className="text-sm text-muted-foreground text-center">
-            <strong>Note:</strong> This AI chatbot will be fully functional once integrated with Supabase backend 
-            and AI services. It will provide personalized crop recommendations and farming insights.
-          </p>
+          <div className="mt-4 p-4 bg-primary/10 rounded-lg border border-primary/20">
+            <p className="text-sm text-foreground text-center">
+              <strong>✓ You're authenticated!</strong> Full AI functionality will be added with Perplexity API integration.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 };
 

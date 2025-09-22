@@ -2,13 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
-import { Sprout, TrendingUp, Users, Brain, ArrowRight, Leaf } from "lucide-react";
+import { Sprout, TrendingUp, Users, Brain, ArrowRight, Leaf, LogOut } from "lucide-react";
 import heroImage from "@/assets/hero-agriculture.jpg";
 import farmerTechImage from "@/assets/farmer-tech.jpg";
+import { useAuth } from "@/hooks/useAuth";
 
 const Welcome = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   const features = [
     {
@@ -51,28 +53,59 @@ const Welcome = () => {
               {t('welcome')}
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-              {t('tagline')}
-            </p>
+            {user ? (
+              <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+                Welcome back, {user.user_metadata?.full_name || user.email}! Ready to explore CropWise?
+              </p>
+            ) : (
+              <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+                {t('tagline')}
+              </p>
+            )}
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-hero hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-strong transition-all duration-300 hover:scale-105"
-              onClick={() => navigate('/login')}
-            >
-              {t('login')}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
-              onClick={() => navigate('/chatbot')}
-            >
-              Try AI Assistant
-            </Button>
+            {user ? (
+              <>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-hero hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-strong transition-all duration-300 hover:scale-105"
+                  onClick={() => navigate('/chatbot')}
+                >
+                  Open AI Assistant
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
+                  onClick={signOut}
+                >
+                  <LogOut className="mr-2 h-5 w-5" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-hero hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-strong transition-all duration-300 hover:scale-105"
+                  onClick={() => navigate('/login')}
+                >
+                  {t('login')}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
+                  onClick={() => navigate('/signup')}
+                >
+                  Sign Up Free
+                </Button>
+              </>
+            )}
             </div>
           </div>
         </div>
@@ -132,9 +165,9 @@ const Welcome = () => {
                   size="lg"
                   variant="secondary"
                   className="bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg font-semibold shadow-strong"
-                  onClick={() => navigate('/login')}
+                  onClick={() => user ? navigate('/chatbot') : navigate('/signup')}
                 >
-                  {t('login')}
+                  {user ? 'Open AI Assistant' : 'Get Started Free'}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>

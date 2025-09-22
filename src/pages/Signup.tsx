@@ -6,6 +6,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import { Sprout, ArrowLeft, Mail, Lock, User } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { toast } from "@/hooks/use-toast";
 
 const Signup = () => {
   const { t } = useLanguage();
@@ -16,15 +18,37 @@ const Signup = () => {
     password: '',
     confirmPassword: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const { signUp } = useAuth();
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match!');
+      toast({
+        title: "Password mismatch",
+        description: "Passwords don't match! Please try again.",
+        variant: "destructive",
+      });
       return;
     }
-    // This will be implemented with Supabase integration
-    console.log('Signup attempt:', formData);
+
+    if (formData.password.length < 6) {
+      toast({
+        title: "Password too short",
+        description: "Password must be at least 6 characters long.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    try {
+      await signUp(formData.email, formData.password, formData.name);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -129,9 +153,10 @@ const Signup = () => {
 
             <Button 
               type="submit" 
-              className="w-full bg-gradient-hero hover:opacity-90 text-white py-6 text-lg font-semibold shadow-soft transition-all duration-300 hover:scale-105"
+              disabled={isLoading}
+              className="w-full bg-gradient-hero hover:opacity-90 text-white py-6 text-lg font-semibold shadow-soft transition-all duration-300 hover:scale-105 disabled:opacity-50"
             >
-              Create Account
+              {isLoading ? "Creating Account..." : "Create Account"}
             </Button>
           </form>
 
@@ -148,10 +173,9 @@ const Signup = () => {
             </p>
           </div>
 
-          <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-            <p className="text-sm text-muted-foreground text-center">
-              <strong>Note:</strong> Account creation requires Supabase integration. 
-              Click the Supabase button to enable authentication.
+          <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+            <p className="text-sm text-foreground text-center">
+              <strong>✓ Authentication enabled!</strong> Create your account to access CropWise features.
             </p>
           </div>
         </Card>

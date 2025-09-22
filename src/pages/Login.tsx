@@ -6,17 +6,25 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import { Sprout, ArrowLeft, Mail, Lock } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 const Login = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { signIn } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // This will be implemented with Supabase integration
-    console.log('Login attempt:', { email, password });
+    setIsLoading(true);
+    
+    try {
+      await signIn(email, password);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -78,9 +86,10 @@ const Login = () => {
 
             <Button 
               type="submit" 
-              className="w-full bg-gradient-hero hover:opacity-90 text-white py-6 text-lg font-semibold shadow-soft transition-all duration-300 hover:scale-105"
+              disabled={isLoading}
+              className="w-full bg-gradient-hero hover:opacity-90 text-white py-6 text-lg font-semibold shadow-soft transition-all duration-300 hover:scale-105 disabled:opacity-50"
             >
-              Sign In
+              {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
 
@@ -97,10 +106,9 @@ const Login = () => {
             </p>
           </div>
 
-          <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-            <p className="text-sm text-muted-foreground text-center">
-              <strong>Note:</strong> Login functionality requires Supabase integration. 
-              Click the Supabase button to enable authentication.
+          <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+            <p className="text-sm text-foreground text-center">
+              <strong>✓ Authentication enabled!</strong> You can now sign in to access CropWise features.
             </p>
           </div>
         </Card>
