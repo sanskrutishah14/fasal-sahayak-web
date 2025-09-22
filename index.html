@@ -3,22 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fasal-sahayak-web</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    
+    <!-- SEO Meta Tags -->
+    <title>CropWise - Smart Crop Recommendations for Modern Farmers</title>
+    <meta name="description" content="Get AI-powered crop recommendations in English, Hindi, and Marathi. Smart farming insights, weather data, and expert guidance for modern agriculture." />
+    <meta name="keywords" content="crop recommendations, smart farming, agriculture, AI farming, crop advice, weather farming, agricultural technology" />
+    <meta name="author" content="CropWise" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://7a54f8aa-a6a7-489c-bdb1-90b5894b64ec.lovableproject.com" />
 
-    <meta property="og:title" content="fasal-sahayak-web" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:title" content="CropWise - Smart Crop Recommendations for Modern Farmers" />
+    <meta property="og:description" content="Get AI-powered crop recommendations in English, Hindi, and Marathi. Smart farming insights for modern agriculture." />
+    <meta property="og:image" content="https://7a54f8aa-a6a7-489c-bdb1-90b5894b64ec.lovableproject.com/og-image.png" />
+    <meta property="og:url" content="https://7a54f8aa-a6a7-489c-bdb1-90b5894b64ec.lovableproject.com" />
+    <meta property="og:site_name" content="CropWise" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="CropWise - Smart Crop Recommendations" />
+    <meta name="twitter:description" content="AI-powered farming insights in multiple languages" />
+    <meta name="twitter:image" content="https://7a54f8aa-a6a7-489c-bdb1-90b5894b64ec.lovableproject.com/og-image.png" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2d7d32" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="CropWise" />
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CropWise",
+      "description": "AI-powered crop recommendations for modern farmers",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "AI-powered crop recommendations",
+        "Multi-language support (English, Hindi, Marathi)",
+        "Weather-based farming insights",
+        "Expert agricultural guidance"
+      ]
+    }
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
