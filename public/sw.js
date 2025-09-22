@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cropwise-v1';
+const CACHE_NAME = 'AgriSaathi-v1';
 const urlsToCache = [
   '/',
   '/welcome',

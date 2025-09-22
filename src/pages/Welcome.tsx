@@ -55,7 +55,7 @@ const Welcome = () => {
             
             {user ? (
               <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-                Welcome back, {user.user_metadata?.full_name || user.email}! Ready to explore CropWise?
+                Welcome back, {user.user_metadata?.full_name || user.email}! Ready to explore AgriSaathi?
               </p>
             ) : (
               <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
@@ -159,7 +159,7 @@ const Welcome = () => {
                   Ready to revolutionize your farming?
                 </h2>
                 <p className="text-xl mb-8 text-white/90">
-                  Join thousands of farmers who trust CropWise for smarter agricultural decisions.
+                  Join thousands of farmers who trust AgriSaathi for smarter agricultural decisions.
                 </p>
                 <Button 
                   size="lg"

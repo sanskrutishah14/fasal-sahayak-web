@@ -20,9 +20,9 @@ const translations = {
     'continue': 'Continue',
     
     // Welcome Page
-    'welcome': 'Welcome to CropWise',
+    'welcome': 'Welcome to AgriSaathi',
     'tagline': 'Smart Crop Recommendations for Modern Farmers',
-    'whyChoose': 'Why Choose CropWise?',
+    'whyChoose': 'Why Choose AgriSaathi?',
     'feature1Title': 'AI-Powered Recommendations',
     'feature1Desc': 'Get personalized crop suggestions based on soil, weather, and market data',
     'feature2Title': 'Increase Your Yield',
@@ -41,9 +41,9 @@ const translations = {
     'continue': 'जारी रखें',
     
     // Welcome Page
-    'welcome': 'CropWise में आपका स्वागत है',
+    'welcome': 'AgriSaathi में आपका स्वागत है',
     'tagline': 'आधुनिक किसानों के लिए स्मार्ट फसल सुझाव',
-    'whyChoose': 'CropWise क्यों चुनें?',
+    'whyChoose': 'AgriSaathi क्यों चुनें?',
     'feature1Title': 'AI-संचालित सुझाव',
     'feature1Desc': 'मिट्टी, मौसम और बाजार डेटा के आधार पर व्यक्तिगत फसल सुझाव प्राप्त करें',
     'feature2Title': 'अपनी उपज बढ़ाएं',
@@ -62,9 +62,9 @@ const translations = {
     'continue': 'सुरू ठेवा',
     
     // Welcome Page
-    'welcome': 'CropWise मध्ये आपले स्वागत आहे',
+    'welcome': 'AgriSaathi मध्ये आपले स्वागत आहे',
     'tagline': 'आधुनिक शेतकऱ्यांसाठी हुशार पीक शिफारसी',
-    'whyChoose': 'CropWise का निवडायचे?',
+    'whyChoose': 'AgriSaathi का निवडायचे?',
     'feature1Title': 'AI-चालित शिफारसी',
     'feature1Desc': 'माती, हवामान आणि बाजार डेटावर आधारित वैयक्तिक पीक सूचना मिळवा',
     'feature2Title': 'तुमचे उत्पादन वाढवा',

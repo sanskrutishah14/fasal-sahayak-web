@@ -1,6 +1,6 @@
 {
-  "name": "CropWise - Smart Crop Recommendations",
-  "short_name": "CropWise",
+  "name": "AgriSaathi - Smart Crop Recommendations",
+  "short_name": "AgriSaathi",
   "description": "AI-powered crop recommendations for modern farmers. Get personalized farming insights in English, Hindi, and Marathi.",
   "start_url": "/",
   "display": "standalone",

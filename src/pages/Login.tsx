@@ -48,7 +48,7 @@ const Login = () => {
               </div>
             </div>
             <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
-            <p className="text-muted-foreground">Sign in to your CropWise account</p>
+            <p className="text-muted-foreground">Sign in to your AgriSaathi account</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
@@ -108,7 +108,7 @@ const Login = () => {
 
           <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
             <p className="text-sm text-foreground text-center">
-              <strong>✓ Authentication enabled!</strong> You can now sign in to access CropWise features.
+              <strong>✓ Authentication enabled!</strong> You can now sign in to access AgriSaathi features.
             </p>
           </div>
         </Card>

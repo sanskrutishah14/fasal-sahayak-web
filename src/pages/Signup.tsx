@@ -78,7 +78,7 @@ const Signup = () => {
                 <Sprout className="h-8 w-8 text-white" />
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Join CropWise</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Join AgriSaathi</h1>
             <p className="text-muted-foreground">Create your account to get started</p>
           </div>
 
@@ -175,7 +175,7 @@ const Signup = () => {
 
           <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
             <p className="text-sm text-foreground text-center">
-              <strong>✓ Authentication enabled!</strong> Create your account to access CropWise features.
+              <strong>✓ Authentication enabled!</strong> Create your account to access AgriSaathi features.
             </p>
           </div>
         </Card>

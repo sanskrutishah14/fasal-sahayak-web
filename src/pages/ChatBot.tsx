@@ -22,7 +22,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: `Hello ${user?.user_metadata?.full_name || 'there'}! I'm your CropWise AI assistant. I can help you with crop recommendations, weather insights, and farming best practices. What would you like to know?`,
+      text: `Hello ${user?.user_metadata?.full_name || 'there'}! I'm your AgriSaathi AI assistant. I can help you with crop recommendations, weather insights, and farming best practices. What would you like to know?`,
       sender: 'bot',
       timestamp: new Date()
     }
@@ -76,7 +76,7 @@ const ChatBot = () => {
                   <Sprout className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold">CropWise AI Assistant</h1>
+                  <h1 className="text-xl font-bold">AgriSaathi AI Assistant</h1>
                   <p className="text-sm text-muted-foreground">Smart farming guidance</p>
                 </div>
               </div>

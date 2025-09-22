@@ -29,7 +29,7 @@ const LanguageSelection = () => {
                 <Sprout className="h-8 w-8 text-white" />
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">CropWise</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">AgriSaathi</h1>
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
               <Globe className="h-4 w-4" />
               <p>{t('selectLanguage')}</p>
